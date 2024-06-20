@@ -10,7 +10,7 @@ original_bytes_f2 = None
 # Function to find a specific pattern in the target process's memory
 def find_pattern(process_name, pattern):
     pm = pymem.Pymem(process_name)
-    module = pymem.process.module_from_name(pm.process_handle, "GameAssembly.dll")  # Targeting module Dll BleachBraveSouls Example  
+    module = pymem.process.module_from_name(pm.process_handle, "Barony.exe")  # Target Module could be a DLL, such as GameAssembly.dll, to search for AOB bytes.
     module_base = module.lpBaseOfDll
     module_end = module_base + module.SizeOfImage
     buffer = pm.read_bytes(module_base, module.SizeOfImage)
@@ -81,7 +81,7 @@ def toggle_replacement_f2():
 
 
 # Target process name
-process_name = "Barony.exe"
+process_name = "Barony.exe" 
 
 # Patterns and replacements for F1 and F2
 pattern_to_replace_f1 = b'\xC7\x86\x70\x02\x00\x00\x08\x00\x00\x00'
